@@ -7,20 +7,35 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "task")
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="task_id",nullable = false,insertable = false)
+    private Long taskId;
 
+    @Column(name="grupo", nullable = true)
     private String grupo;
+
+    @Column(name = "titulo", nullable = false)
     private String titulo;
+
+    @Column(name="descricao", nullable = false)
     private String descricao;
+
+    @Column(name="completado", nullable = false)
     private boolean completado;
+
+    @Column(name="data_criada", nullable = false)
     private LocalDateTime dataCriada;
-    private LocalDateTime dataCompleta;
+
+    @Column(name="data_vencimento", nullable = false)
     private LocalDateTime dataVencimento;
 
-    public Long getId() {
-        return id;
+    @Column(name="data_completa", nullable = true, columnDefinition = "True")
+    private LocalDateTime dataCompleta;
+
+    public Long getTaskId() {
+        return taskId;
     }
 
     public String getGrupo() {
@@ -51,8 +66,8 @@ public class Task {
         return dataVencimento;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 
     public void setGrupo(String grupo) {

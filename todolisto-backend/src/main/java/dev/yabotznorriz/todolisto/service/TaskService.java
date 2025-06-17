@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -20,11 +21,11 @@ public class TaskService {
     }
 
     public List<Task> getCompletedTasks() {
-        return taskRepository.findByCompleted(true);
+        return taskRepository.findByCompletado(true);
     }
 
     public List<Task> getPendingTasks() {
-        return taskRepository.findByCompleted(false);
+        return taskRepository.findByCompletado(false);
     }
 
     public Task createTask(Task task) {
@@ -55,5 +56,9 @@ public class TaskService {
         LocalDateTime dataAgora = LocalDateTime.now();
         task.setDataVencimento(dataAgora);
         return taskRepository.save(task);
+    }
+
+    public Optional<Task> getTaskById(Long id) {
+        return taskRepository.findById(id);
     }
 }

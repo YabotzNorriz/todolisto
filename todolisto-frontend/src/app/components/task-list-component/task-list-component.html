@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>Task List</h2>
+
+  <div *ngIf="isLoading" class="loading">Loading tasks...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label for="grupoFilter">Filter by Group:</label>
+      <input
+        id="grupoFilter"
+        type="text"
+        [(ngModel)]="filter.grupo"
+        (input)="applyFilters()"
+        placeholder="Enter group name"
+      />
+    </div>
+
+    <div class="filter-group">
+      <label>Filter by Status:</label>
+      <select [(ngModel)]="filter.completado" (change)="applyFilters()">
+        <option value="all">All Tasks</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+    </div>
+  </div>
+
+  <table *ngIf="!isLoading && !error">
+    <thead>
+      <tr>
+        <th>Group</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Created</th>
+        <th>Due Date</th>
+        <th>Completed</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let task of filteredTasks"
+        [class.completed]="task.completado"
+      >
+        <td>{{ task.grupo || '-' }}</td>
+        <td>{{ task.titulo }}</td>
+        <td>{{ task.descricao }}</td>
+        <td>
+          <span class="status-badge" [class.completed]="task.completado">
+            {{ task.completado ? 'Completed' : 'Pending' }}
+          </span>
+        </td>
+        <td>{{ formatDate(task.dataCriada) }}</td>
+        <td>{{ formatDate(task.dataVencimento) }}</td>
+        <td>{{ formatDate(task.dataCompleta) }}</td>
+        <td class="actions">
+          <button (click)="openEdit(task.taskId)" class="edit-button">
+            Edit
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="filteredTasks.length === 0">
+        <td colspan="9" class="no-tasks">
+          No tasks found matching your filters.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="new-task-button-container">
+    <button (click)="openAdd()" class="new-task-button">
+      <i class="plus-icon">+</i> Create New Task
+    </button>
+  </div>
+</div>

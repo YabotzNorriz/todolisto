@@ -1,0 +1,88 @@
+<div class="container">
+  <h2>Edit Task</h2>
+
+  <div *ngIf="loadingTask" class="loading">Loading task...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <form
+    *ngIf="!loadingTask && !error"
+    [formGroup]="taskForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label for="grupo">Group</label>
+      <input
+        id="grupo"
+        type="text"
+        formControlName="grupo"
+        placeholder="Enter group name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="titulo">Title *</label>
+      <input
+        id="titulo"
+        type="text"
+        formControlName="titulo"
+        placeholder="Enter task title"
+        [class.invalid]="taskForm.get('titulo')?.invalid && taskForm.get('titulo')?.touched"
+      />
+      <div
+        *ngIf="taskForm.get('titulo')?.invalid && taskForm.get('titulo')?.touched"
+        class="error-message"
+      >
+        Title is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Description *</label>
+      <textarea
+        id="descricao"
+        formControlName="descricao"
+        placeholder="Enter task description"
+        rows="4"
+        [class.invalid]="taskForm.get('descricao')?.invalid && taskForm.get('descricao')?.touched"
+      ></textarea>
+      <div
+        *ngIf="taskForm.get('descricao')?.invalid && taskForm.get('descricao')?.touched"
+        class="error-message"
+      >
+        Description is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dataVencimento">Due Date *</label>
+      <input
+        id="dataVencimento"
+        type="datetime-local"
+        formControlName="dataVencimento"
+        [class.invalid]="taskForm.get('dataVencimento')?.invalid && taskForm.get('dataVencimento')?.touched"
+      />
+      <div
+        *ngIf="taskForm.get('dataVencimento')?.invalid && taskForm.get('dataVencimento')?.touched"
+        class="error-message"
+      >
+        Due date is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" formControlName="completado" />
+        Completed
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-button" [disabled]="isLoading">
+        {{ isLoading ? 'Saving...' : 'Save Changes' }}
+      </button>
+      <button type="button" class="cancel-button" (click)="goBack()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

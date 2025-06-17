@@ -1,9 +1,10 @@
 export interface Task {
-  task_id?: number;
+  taskId: string | number;
+  grupo: string;
   titulo: string;
   descricao: string;
   completado: boolean;
   dataCriada?: string;
   dataVencimento?: string;
-  dataCompleta?: string;
+  dataCompleta?: string | null;
 }
