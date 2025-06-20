@@ -96,7 +96,7 @@ Antes de começar, certifique-se de que você tem os seguintes softwares instala
 
 ---
 
-## 🔌 Endpoints da API
+## Endpoints da API
 
 | Método HTTP | Endpoint                  | Descrição                                 |
 |-------------|---------------------------|-------------------------------------------|
