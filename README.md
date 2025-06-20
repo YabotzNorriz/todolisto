@@ -6,7 +6,7 @@ Bem-vindo ao **TodoListo**, uma aplicação full-stack de gerenciamento de taref
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 O projeto é dividido em duas partes principais:
 
@@ -94,11 +94,6 @@ Antes de começar, certifique-se de que você tem os seguintes softwares instala
         ```
     * A aplicação frontend estará acessível em `http://localhost:4200/`.
 
----
-
-## Estrutura do Projeto
-
-todolisto-main/├── todolisto-backend/        # Projeto Spring Boot (Backend)│   ├── src/main/java/│   │   └── dev/yabotznorriz/todolisto/│   │       ├── config/       # Configurações (ex: CORS)│   │       ├── controller/   # Controladores REST│   │       ├── model/        # Entidades JPA│   │       ├── repository/   # Repositórios Spring Data│   │       └── service/      # Lógica de negócios│   ├── src/main/resources/   # Arquivos de recursos (application.properties)│   └── pom.xml               # Configuração do Maven│├── todolisto-frontend/       # Projeto Angular (Frontend)│   ├── src/│   │   ├── app/│   │   │   ├── components/   # Componentes da aplicação│   │   │   ├── services/     # Serviços (ex: TaskService)│   │   │   ├── Task.ts       # Interface do modelo│   │   │   └── app.routes.ts # Definição de rotas│   │   ├── main.ts           # Ponto de entrada da aplicação│   │   └── styles.scss       # Estilos globais│   ├── angular.json          # Configuração do Angular CLI│   └── package.json          # Dependências do Node.js│└── scripts_sql/              # Scripts de banco de dados└── task.sql
 ---
 
 ## 🔌 Endpoints da API
