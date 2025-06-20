@@ -2,12 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Define o projeto pai, que fornece configurações e dependências padrão do Spring Boot -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<!-- Coordenadas Maven do projeto -->
 	<groupId>dev.yabotznorriz</groupId>
 	<artifactId>todolisto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -26,33 +30,44 @@
 		<tag/>
 		<url/>
 	</scm>
+
+	<!-- Propriedades do projeto -->
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+
+	<!-- Dependências do projeto -->
 	<dependencies>
+		<!-- Dependência para persistência de dados com JPA (Java Persistence API) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- Dependência para criar aplicações web, incluindo APIs REST -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Conector JDBC para o banco de dados MySQL -->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
+			<scope>runtime</scope> <!-- Esta dependência é necessária apenas em tempo de execução -->
 		</dependency>
+
+		<!-- Dependência para testes unitários e de integração -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<scope>test</scope> <!-- Esta dependência é usada apenas para a fase de testes -->
 		</dependency>
 	</dependencies>
 
+	<!-- Configurações de build do projeto -->
 	<build>
 		<plugins>
+			<!-- Plugin do Spring Boot para Maven, facilita a criação de JARs executáveis -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
